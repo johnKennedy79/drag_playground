@@ -43,3 +43,9 @@
   color: red;
   border-radius: 20px;
 }
+.timeContainer {
+  display: flex;
+  height: 25vh;
+  width: 100vw;
+  justify-content: space-evenly;
+}
