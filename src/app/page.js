@@ -31,19 +31,25 @@ export default function Home() {
   const dragHandlers = { onStart, onStop };
   return (
     <main>
-      <Draggable>
-        <div>
-          <CountDown />
+      <div className="timeContainer">
+        <div style={{ width: "300px" }}>
+          <Draggable>
+            <div>
+              <CountDown />
+            </div>
+          </Draggable>
         </div>
-      </Draggable>
-      <Draggable onDrag={handleDrag} {...dragHandlers}>
-        <div>
-          <p>
-            x:{deltaPossition.x.toFixed(0)}, y:{deltaPossition.y.toFixed(0)}
-          </p>
-          <Clock />
+        <div style={{ width: "200px" }}>
+          <Draggable onDrag={handleDrag} {...dragHandlers}>
+            <div>
+              <p>
+                x:{deltaPossition.x.toFixed(0)}, y:{deltaPossition.y.toFixed(0)}
+              </p>
+              <Clock />
+            </div>
+          </Draggable>
         </div>
-      </Draggable>
+      </div>
       <Draggable grid={[50, 50]}>
         <div className="tile">A</div>
       </Draggable>
