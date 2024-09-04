@@ -1,95 +1,127 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+"use client";
+import Draggable from "react-draggable";
+import "./globals.css";
+import Clock from "./components/clock";
+import CountDown from "./components/countDown";
+import { useState } from "react";
 export default function Home() {
+  const [activeDrags, SetactiveDrags] = useState(0);
+  const [deltaPossition, setDeltaPosition] = useState({ x: 0, y: 0 });
+  const [controledPosition, setControledPosition] = useState({
+    x: -400,
+    y: 200,
+  });
+  const eventHandler = (e, data) => {
+    console.log("Event Type", e.type);
+    console.log({ e, data });
+  };
+  const handleDrag = (e, ui) => {
+    console.log(ui.deltaX);
+    setDeltaPosition((prev) => ({
+      x: prev.x + ui.deltaX,
+      y: prev.y + ui.deltaY,
+    }));
+  };
+  const onStart = () => {
+    SetactiveDrags((prev) => prev + 1);
+  };
+  const onStop = () => {
+    SetactiveDrags((prev) => prev - 1);
+  };
+  const dragHandlers = { onStart, onStop };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+    <main>
+      <Draggable>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <CountDown />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+      </Draggable>
+      <Draggable onDrag={handleDrag} {...dragHandlers}>
+        <div>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            x:{deltaPossition.x.toFixed(0)}, y:{deltaPossition.y.toFixed(0)}
           </p>
-        </a>
-      </div>
+          <Clock />
+        </div>
+      </Draggable>
+      <Draggable grid={[50, 50]}>
+        <div className="tile">A</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">B</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">C</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">D</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">E</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">F</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">G</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">H</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">I</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">J</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">K</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">L</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">M</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">N</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">O</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">P</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">Q</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">R</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">S</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">T</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">U</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">V</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">W</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">X</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">Y</div>
+      </Draggable>
+      <Draggable grid={[10, 10]}>
+        <div className="tile">Z</div>
+      </Draggable>
     </main>
   );
 }
