@@ -59,7 +59,19 @@
   z-index: 2;
   color: pink;
   background-color: green;
+  border: solid 1px black;
+  opacity: 1;
 }
+.puzzletile:hover {
+  cursor: grab;
+  opacity: 0.75;
+}
+
+.puzzletile:active {
+  cursor: grabbing;
+  opacity: 0.5;
+}
+
 .clock {
   padding: 1rem;
   text-align: center;

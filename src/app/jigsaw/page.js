@@ -18,23 +18,43 @@ const App = () => {
     <div className="container">
       <NavBar />
       <h1>Puzzle</h1>
-      <div
-        className="puzzle-container"
-        style={{ height: "780px", width: "780px", padding: "10px" }}
+      <main
+        className="puzzle-box"
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
       >
-        {imageTiles.map((imageName, index) => (
-          <Draggable key={index} grid={[5, 5]} bounds="parent">
-            <div className="puzzletile">
-              <Image
-                src={`/jigsaw/cutups/${imageName}`}
-                alt={`Image ${index}`}
-                width={195} // Set appropriate width
-                height={195} // Set appropriate height
-              />
-            </div>
-          </Draggable>
-        ))}
-      </div>
+        <div
+          className="puzzle-container"
+          style={{
+            width: "780px",
+            height: "780px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, 195px)",
+            gap: "10px",
+          }}
+        >
+          {imageTiles.length > 0 ? (
+            imageTiles.map((imageName, index) => (
+              <Draggable key={index} grid={[5, 5]} bounds="main">
+                <div className="puzzletile">
+                  <Image
+                    src={`/cutups/${imageName}`}
+                    alt={`Image ${index}`}
+                    width={195}
+                    height={195}
+                  />
+                </div>
+              </Draggable>
+            ))
+          ) : (
+            <p>Loading images...</p>
+          )}
+        </div>
+      </main>
     </div>
   );
 };
