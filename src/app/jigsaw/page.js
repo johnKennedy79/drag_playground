@@ -1,10 +1,9 @@
-// Photo by Richard Beatson on Unsplash
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import "../globals.css";
-import shuffledImages from "@/src/app/jigsaw/cutups";
+import shuffledImages from "../components/shuffledImages";
 import Image from "next/image";
 import NavBar from "../components/navBar";
 
@@ -21,14 +20,16 @@ const App = () => {
       <h1>Puzzle</h1>
       <div
         className="puzzle-container"
-        style={{ height: "1560px", width: "1560px", padding: "10px" }}
+        style={{ height: "780px", width: "780px", padding: "10px" }}
       >
         {imageTiles.map((imageName, index) => (
           <Draggable key={index} grid={[5, 5]} bounds="parent">
             <div className="puzzletile">
               <Image
-                src={`@/src/app/jigsaw/cutups/${imageName}`}
+                src={`/jigsaw/cutups/${imageName}`}
                 alt={`Image ${index}`}
+                width={195} // Set appropriate width
+                height={195} // Set appropriate height
               />
             </div>
           </Draggable>
