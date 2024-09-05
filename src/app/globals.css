@@ -25,9 +25,11 @@
 .puzzle-container {
   gap: 10px;
   border: 1px solid black;
-  background-image: url(../jigsaw/organ-full-image.jpg);
+  background-image: url("./jigsaw/organ-full-image.jpg");
   background-position: center;
   position: relative;
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .tile {
@@ -46,6 +48,7 @@
   width: 390px;
   height: 390px;
   display: flex;
+  z-index: 2;
 }
 .clock {
   padding: 1rem;

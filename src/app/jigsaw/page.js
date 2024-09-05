@@ -3,16 +3,18 @@
 
 import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
-import "../globals.css";
-import shuffledImages from "@/src/app/jigsaw/cutups";
+import "./globals.css";
+import shuffledImages from "./jigsaw/cutups";
 import Image from "next/image";
 
 const App = () => {
   const [imageTiles, setImageTiles] = useState([]);
+  //Initialising imageTiles as an array holding the image_part filenames.
 
   useEffect(() => {
     setImageTiles(shuffledImages);
   }, []);
+  //Assigning shuffledImages
 
   return (
     <div className="container">
@@ -25,7 +27,7 @@ const App = () => {
           <Draggable key={index} grid={[5, 5]} bounds="parent">
             <div className="puzzletile">
               <Image
-                src={`@/src/app/jigsaw/cutups/${imageName}`}
+                src={`./jigsaw/cutups/${imageName}`}
                 alt={`Image ${index}`}
               />
             </div>
@@ -35,5 +37,6 @@ const App = () => {
     </div>
   );
 };
+//Creating the container
 
 export default App;
