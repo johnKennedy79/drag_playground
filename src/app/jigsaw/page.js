@@ -6,6 +6,7 @@ import Draggable from "react-draggable";
 import "../globals.css";
 import shuffledImages from "@/src/app/jigsaw/cutups";
 import Image from "next/image";
+import NavBar from "../components/navBar";
 
 const App = () => {
   const [imageTiles, setImageTiles] = useState([]);
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <NavBar />
       <h1>Puzzle</h1>
       <div
         className="puzzle-container"

@@ -4,6 +4,10 @@ import "./globals.css";
 import Clock from "./components/clock";
 import CountDown from "./components/countDown";
 import { useState } from "react";
+import AxisX from "./components/axisx";
+import AxisY from "./components/axisy";
+import Link from "next/link";
+import NavBar from "./components/navBar";
 export default function Home() {
   const [activeDrags, SetactiveDrags] = useState(0);
   const [deltaPossition, setDeltaPosition] = useState({ x: 0, y: 0 });
@@ -30,103 +34,59 @@ export default function Home() {
   };
   const dragHandlers = { onStart, onStop };
   return (
-    <main>
+    <main className="homePage">
+      <nav>
+        <NavBar />
+      </nav>
       <div className="timeContainer">
         <div style={{ width: "300px" }}>
-          <Draggable>
+          <Draggable handle="handle" bounds="main">
             <div>
+              <handle className="handle">handle</handle>
               <CountDown />
             </div>
           </Draggable>
         </div>
+
         <div style={{ width: "200px" }}>
-          <Draggable onDrag={handleDrag} {...dragHandlers}>
+          <Draggable handle="handle" onDrag={handleDrag} {...dragHandlers}>
             <div>
-              <p>
-                x:{deltaPossition.x.toFixed(0)}, y:{deltaPossition.y.toFixed(0)}
-              </p>
+              <div className="clockHead">
+                <p>
+                  x:{deltaPossition.x.toFixed(0)}, y:
+                  {deltaPossition.y.toFixed(0)}
+                </p>
+                <handle>
+                  <div className="handle">handle</div>
+                </handle>
+              </div>
               <Clock />
             </div>
           </Draggable>
         </div>
       </div>
-      <Draggable grid={[50, 50]}>
-        <div className="tile">A</div>
+
+      <Draggable
+        axis="x"
+        bounds={{ top: -100, left: -0, right: 500, bottom: 100 }}
+      >
+        <div
+          className="dragx"
+          style={{ position: "absolute", bottom: "500px", left: "40px" }}
+        >
+          <AxisX />
+        </div>
       </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">B</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">C</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">D</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">E</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">F</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">G</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">H</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">I</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">J</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">K</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">L</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">M</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">N</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">O</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">P</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">Q</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">R</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">S</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">T</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">U</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">V</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">W</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">X</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">Y</div>
-      </Draggable>
-      <Draggable grid={[10, 10]}>
-        <div className="tile">Z</div>
+      <Draggable
+        axis="y"
+        bounds={{ top: -0, left: -100, right: 100, bottom: 500 }}
+      >
+        <div
+          className="dragy"
+          style={{ position: "absolute", bottom: "320px", left: "10px" }}
+        >
+          <AxisY />
+        </div>
       </Draggable>
     </main>
   );

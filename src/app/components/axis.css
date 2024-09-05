@@ -1,0 +1,26 @@
+.xbox {
+  width: 100px;
+  height: 100px;
+  background-color: darkgoldenrod;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 25vh;
+}
+
+.ybox {
+  width: 100px;
+  height: 100px;
+  background-color: crimson;
+  text-align: center;
+  padding: 1rem;
+  margin-left: 2rem;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 4rem;
+  background-color: aquamarine;
+}

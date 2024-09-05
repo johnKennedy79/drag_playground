@@ -1,6 +1,6 @@
 import "./countDown.css";
 import { useState, useEffect } from "react";
-const countDown_target = new Date("2024-09-06T09:00:00");
+const countDown_target = new Date("2024-09-06T12:00:00");
 const getTimeLeft = () => {
   const totalTimeLeft = countDown_target - new Date();
   const days = Math.floor(totalTimeLeft / (1000 * 60 * 60 * 24));
@@ -30,7 +30,7 @@ export default function CountDown() {
             return (
               <div className="box" key={label}>
                 <div className="value">
-                  <span>{value}</span>
+                  <span suppressHydrationWarning>{value}</span>
                 </div>
                 <span className="label">{label}</span>
               </div>

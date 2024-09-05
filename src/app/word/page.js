@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Draggable from "react-draggable";
 import "../globals.css";
+import NavBar from "../components/navBar";
 
 const randomLetter = () => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <NavBar />
       <h1>Fridge Magnets</h1>
       <button onClick={generateRandomLetters} className="generate-btn">
         Generate Letters
